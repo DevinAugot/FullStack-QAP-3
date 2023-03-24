@@ -2,7 +2,7 @@ const dal = require("./pdb");
 
 //get all actors. by ID
 var getMenu = function() {
-  if(DEBUG) console.log("actors.pg.dal.getMenu()");
+  if(DEBUG) console.log("menu.pg.dal.getMenu()");
   return new Promise(function(resolve, reject) {
     const sql = "SELECT * FROM menu \
     ORDER BY item_id ASC;"
@@ -18,38 +18,38 @@ var getMenu = function() {
   }); 
 };
  // GET all
-// var getActorByActorId = function(id) {
-//   if(DEBUG) console.log("actors.pg.dal.getActorByActorId()");
-//   return new Promise(function(resolve, reject) {
-//     const sql = "SELECT actor_id AS _id, first_name, last_name FROM actor WHERE actor_id = $1";
-//     dal.query(sql, [id], (err, result) => {
-//       if (err) {
-//         // logging should go here
-//         if(DEBUG) console.log(err);
-//         reject(err);
-//       } else {
-//         resolve(result.rows);
-//       }
-//     }); 
-//   }); 
-// };
+var getMenuItemByMenuId = function(id) {
+  if(DEBUG) console.log("menu.pg.dal.getMenuItemByMenuId()");
+  return new Promise(function(resolve, reject) {
+    const sql = "SELECT item_id AS _id, item_name, item_price FROM menu WHERE item_id = $1";
+    dal.query(sql, [id], (err, result) => {
+      if (err) {
+        // logging should go here
+        if(DEBUG) console.log(err);
+        reject(err);
+      } else {
+        resolve(result.rows);
+      }
+    }); 
+  }); 
+};
 
 // // this adds to the database (insert) POST
-// var addActor = function(fname, lname) {
-//   if(DEBUG) console.log("actors.pg.dal.addActor()");
-//   return new Promise(function(resolve, reject) {
-//     const sql = "INSERT INTO public.actor(first_name, last_name) \
-//         VALUES ($1, $2);";
-//     dal.query(sql, [fname, lname], (err, result) => {
-//       if (err) {
-//           if(DEBUG) console.log(err);
-//           reject(err);
-//         } else {
-//           resolve(result.rows);
-//         }
-//     }); 
-//   });
-// };
+var addMenuItem = function(item_id, item_name,item_price) {
+  if(DEBUG) console.log("menu.pg.dal.addMenuItem()");
+  return new Promise(function(resolve, reject) {
+    const sql = "INSERT INTO menu (item_id, item_name, item_price) \
+        VALUES ($1, $2, $3);";
+    dal.query(sql, [item_id, item_name, item_price], (err, result) => {
+      if (err) {
+          if(DEBUG) console.log(err);
+          reject(err);
+        } else {
+          resolve(result.rows);
+        }
+    }); 
+  });
+};
 
 // // PUT
 // var putActor = function(id, fname, lname) {
@@ -98,8 +98,8 @@ var getMenu = function() {
 
 module.exports = {
     getMenu,
-    // getActorByActorId,
-    // addActor,
+    getMenuItemByMenuId,
+    addMenuItem,
     // putActor,
     // patchActor,
     // deleteActor,

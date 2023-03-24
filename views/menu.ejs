@@ -7,13 +7,14 @@
                 <b>Menu: </b></br> 
             <% if (theMenu.length > 0) { %>
                 <% theMenu.forEach(menu => { %>
-                    <b><%= menu.item_id %><%= menu.item_name %> <%= menu.item_price %></b>
+                    <b><%= menu.item_id %><%=". "%><%= menu.item_name %> <%= menu.item_price %></b>
                     <a href="/menu/<%=menu.item_id%>/edit?item_name=<%=menu.item_name%>&item_price=<%=menu.item_price%>">edit</a>
                     <a href="/menu/<%=menu.item_id%>/delete?item_name=<%=menu.item_name%>&item_price=<%=menu.item_price%>">delete</a>
                     <a href="/menu/<%=menu.item_id%>/replace?item_name=<%=menu.item_name%>&item_price=<%=menu.item_price%>">replace</a></br> 
                     <% }) %>
             <% } %>
             </br><label>Add Menu Item:</label></br>
+        </br>
             <label>New Item ID Number:
                 <input type="text" id="item_id" name="item_id" value="<%= locals.item_id %>" required>
             </label>
@@ -24,9 +25,11 @@
                 <input type="text" id="item_price" name="item_price" value="<%= locals.item_price %>" required>
             </label>
             </br>
+        </br>
             <button>POST</button>
         </form>
         </div>
     </body>
+</br>
     <%- include('./partials/footer.ejs') %>
 </html>
