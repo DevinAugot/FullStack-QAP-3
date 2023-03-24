@@ -1,34 +1,37 @@
-const express = require('express');
-const methodOverride = require('method-override');
+const express = require("express");
+const methodOverride = require("method-override");
 const app = express();
 const PORT = 3000;
 
 global.DEBUG = true;
-app.set('view engine', 'ejs');
-app.use(express.static('public'));
+app.set("view engine", "ejs");
+app.use(express.static("public"));
 
 // express.urlencoded and methodOverride are super import do some research!
-app.use(express.urlencoded({ extended: true, })); // This is important!
-app.use(methodOverride('_method')); // So is this!
+app.use(express.urlencoded({ extended: true })); // This is important!
+app.use(methodOverride("_method")); // So is this!
 
-app.get('/', (req, res) => {
-    res.render('index.ejs', { name: 'Cassian Andor'});
+app.get("/", (req, res) => {
+  res.render("index.ejs", { name: "For Adding menu Items" });
 });
-app.get('/about', (request, response) => {
-    response.render('about.ejs');
+app.get("/about", (request, response) => {
+  response.render("about.ejs");
 });
+// app.get("/menu", (request, response) => {
+//     response.render("menu.ejs");
+//   });
 
-const actorsRouter = require('./routes/actors')
-app.use('/actors', actorsRouter);
+const menuRouter = require("./routes/api/menu");
+app.use("/menu", menuRouter);
 
 // anything beginning with "/api" will go into this
-const apiRouter = require('./routes/api')
-app.use('/api', apiRouter);
+const apiRouter = require("./routes/api");
+app.use("/api", apiRouter);
 
 app.use((req, res) => {
-    res.status(404).render('404');
+  res.status(404).render("404");
 });
 
 app.listen(PORT, () => {
-    console.log(`Simple app running on port ${PORT}.`)
+  console.log(`Simple app running on port ${PORT}.`);
 });
