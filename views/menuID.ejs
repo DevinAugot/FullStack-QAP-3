@@ -1,0 +1,15 @@
+<html lang="en">
+    <%- include('./partials/header.ejs') %>
+    <body>
+        <%- include('./partials/nav.ejs') %>
+        <div class="menu content">
+            <h2>Single Menu Item:</h2>
+            <% if (theMenu.length > 0) 
+                var menu = theMenu[0];{ %>
+                <h3><%= menu.item_id %> <%= menu.item_name %>  <%= menu.item_price %>
+                </h3> 
+            <% } %>
+        </div>
+    </body>
+    <%- include('./partials/footer.ejs') %>
+</html>

@@ -1,0 +1,16 @@
+<html lang="en">
+    <%- include('./partials/header.ejs') %>
+    <body>
+        <%- include('./partials/nav.ejs') %>
+        <div class="create content">
+            <form action="/menu/<%= locals.theId %>?_method=PATCH" method="POST">
+                <label>Edit Menu Item Name or Price:</br>
+                    <input type="text" name="item_name" value="<%= locals.item_name %>" required>
+                    <input type="text" name="item_price" value="<%= locals.item_price %>" required>
+                </label></br>
+                <button>PATCH</button>
+            </form>
+        </div>
+    </body>
+    <%- include('./partials/footer.ejs') %>
+</html>
