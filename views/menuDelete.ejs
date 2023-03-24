@@ -1,0 +1,15 @@
+<html lang="en">
+    <%- include('./partials/header.ejs') %>
+    <body>
+        <%- include('./partials/nav.ejs') %>
+        <div class="create content">
+            <form action="/menu/<%= locals.theId %>?_method=DELETE" method="POST">
+                <label>Are you sure you want to delete this Menu item?</br>
+                    <input type="text" id="<%= locals.theId %>" name="menu" value="<%= locals.item_id %> <%= locals.item_name %> <%= locals.item_price %>" readonly>
+                </label>
+                <button>DELETE</button>
+            </form>
+        </div>
+    </body>
+    <%- include('./partials/footer.ejs') %>
+</html>

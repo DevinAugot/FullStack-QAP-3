@@ -32,7 +32,7 @@ router.get("/:id", async (req, res) => {
   }
 });
 
-// this works and posts new menu item
+// POST this works and posts new menu item
 
 router.post("/", async (req, res) => {
   if (DEBUG) console.log("menu.POST");
@@ -49,53 +49,75 @@ router.post("/", async (req, res) => {
   }
 });
 
-// router.get('/:id/replace', async (req, res) => {
-//     if(DEBUG) console.log('actor.Replace : ' + req.params.id);
-//     res.render('actorPut.ejs', {firstName: req.query.firstName, lastName: req.query.lastName, theId: req.params.id});
-// });
+// PUT Works!!!
+router.get("/:id/replace", async (req, res) => {
+  if (DEBUG) console.log("menu.Replace : " + req.params.id);
+  res.render("menuPut.ejs", {
+    item_name: req.query.item_name,
+    item_price: req.query.item_price,
+    theId: req.params.id,
+  });
+});
+// DELETE Works!
+router.get("/:id/delete", async (req, res) => {
+  if (DEBUG) console.log("menu.Delete : " + req.params.id);
+  res.render("menuDelete.ejs", {
+    item_id: req.query.item_id,
+    item_name: req.query.item_name,
+    item_price: req.query.item_price,
+    theId: req.params.id,
+  });
+});
 
-// router.get('/:id/edit', async (req, res) => {
-//     if(DEBUG) console.log('actor.Edit : ' + req.params.id);
-//     res.render('actorPatch.ejs', {firstName: req.query.firstName, lastName: req.query.lastName, theId: req.params.id});
-// });
+router.get("/:id/edit", async (req, res) => {
+  if (DEBUG) console.log("menu.Edit : " + req.params.id);
+  res.render("menuPatch.ejs", {
+    item_name: req.query.item_name,
+    item_price: req.query.item_price,
+    theId: req.params.id,
+  });
+});
 
-// router.get('/:id/delete', async (req, res) => {
-//     if(DEBUG) console.log('actor.Delete : ' + req.params.id);
-//     res.render('actorDelete.ejs', {firstName: req.query.firstName, lastName: req.query.lastName, theId: req.params.id});
-// });
+router.put("/:id", async (req, res) => {
+  if (DEBUG) console.log("menu.PUT: " + req.params.id);
+  try {
+    await menuDal.putMenuItem(
+      req.params.id,
+      req.body.item_name,
+      req.body.item_price
+    );
+    res.redirect("/menu/");
+  } catch {
+    // log this error to an error log file.
+    res.render("503");
+  }
+});
 
-// // PUT, PATCH, and DELETE are part of HTTP, not a part of HTML
-// // Therefore, <form method="PUT" ...> doesn't work, but it does work for RESTful API
+// PATCH WORKS!
+router.patch("/:id", async (req, res) => {
+  if (DEBUG) console.log("menu.PATCH: " + req.params.id);
+  try {
+    await menuDal.patchMenuItem(
+      req.params.id,
+      req.body.item_name,
+      req.body.item_price
+    );
+    res.redirect("/menu/");
+  } catch {
+    // log this error to an error log file.
+    res.render("503");
+  }
+});
 
-// router.put('/:id', async (req, res) => {
-//     if(DEBUG) console.log('actors.PUT: ' + req.params.id);
-//     try {
-//         await actorsDal.putActor(req.params.id, req.body.firstName, req.body.lastName);
-//         res.redirect('/actors/');
-//     } catch {
-//         // log this error to an error log file.
-//         res.render('503');
-//     }
-// });
-// router.patch('/:id', async (req, res) => {
-//     if(DEBUG) console.log('actors.PATCH: ' + req.params.id);
-//     try {
-//         await actorsDal.patchActor(req.params.id, req.body.firstName, req.body.lastName);
-//         res.redirect('/actors/');
-//     } catch {
-//         // log this error to an error log file.
-//         res.render('503');
-//     }
-// });
-// router.delete('/:id', async (req, res) => {
-//     if(DEBUG) console.log('actors.DELETE: ' + req.params.id);
-//     try {
-//         await actorsDal.deleteActor(req.params.id);
-//         res.redirect('/actors/');
-//     } catch {
-//         // log this error to an error log file.
-//         res.render('503');
-//     }
-// });
+router.delete("/:id", async (req, res) => {
+  if (DEBUG) console.log("menu.DELETE: " + req.params.id);
+  try {
+    await menuDal.deleteMenuItem(req.params.id);
+    res.redirect("/menu/");
+  } catch {
+    // log this error to an error log file.
+    res.render("503");
+  }
+});
 
 module.exports = router;
