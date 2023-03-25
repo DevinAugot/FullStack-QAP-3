@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const menuDal = require("../../services/pg.menu.dal");
 
-// works grabs entire menu
+// This works grabs entire menu
 router.get("/", async (req, res) => {
   // const theMenu = [
   //   { item_id: 1, item_name: "Hamburger & Fries", item_price: "8.99" },
@@ -18,7 +18,7 @@ router.get("/", async (req, res) => {
   }
 });
 
-// works grab menu item by id
+// This works grab menu item by id
 router.get("/:id", async (req, res) => {
   // const theMenu = [
   //     {item_id: 1 , item_name: 'Hamburger & Fries', item_price: '8.99'}
@@ -49,7 +49,7 @@ router.post("/", async (req, res) => {
   }
 });
 
-// PUT Works!!!
+// PUT
 router.get("/:id/replace", async (req, res) => {
   if (DEBUG) console.log("menu.Replace : " + req.params.id);
   res.render("menuPut.ejs", {
@@ -84,7 +84,7 @@ router.put("/:id", async (req, res) => {
     await menuDal.putMenuItem(
       req.params.id,
       req.body.item_name,
-      req.body.item_price
+      req.body.item_price,
     );
     res.redirect("/menu/");
   } catch {
@@ -93,7 +93,7 @@ router.put("/:id", async (req, res) => {
   }
 });
 
-// PATCH WORKS!
+// PATCH WORKS (replace)!
 router.patch("/:id", async (req, res) => {
   if (DEBUG) console.log("menu.PATCH: " + req.params.id);
   try {
