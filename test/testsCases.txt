@@ -1,10 +1,10 @@
 1.	As a Martha’s Good Eats customer I can see a web page listing all the menu data from the qap_3_s3 database.
-
+DONE 
 
 2.	As a Martha’s Good Eats business partner I can fetch all the Menu from the database from a REST API. The records will be returned as json data.
 
 
 3.	As a Martha’s Good Eats staff member I can see a web page that will allow me to add a new item to the Menu of the database.
-
+DONE
 
 4.	Continue with remaining test scenarios.
