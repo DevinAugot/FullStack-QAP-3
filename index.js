@@ -7,6 +7,8 @@ global.DEBUG = true;
 app.set("view engine", "ejs");
 app.use(express.static("public"));
 
+
+
 // express.urlencoded and methodOverride are super import do some research!
 app.use(express.urlencoded({ extended: true })); // This is important!
 app.use(methodOverride("_method")); // So is this!
@@ -17,9 +19,12 @@ app.get("/", (req, res) => {
 app.get("/about", (request, response) => {
   response.render("about.ejs");
 });
-// app.get("/menu", (request, response) => {
-//     response.render("menu.ejs");
-//   });
+
+// why isnt page rendering JSON
+app.get("/menuJson", (request, response) => {
+  response.render("menuJson.ejs");
+});
+
 
 const menuRouter = require("./routes/api/menu");
 app.use("/menu", menuRouter);

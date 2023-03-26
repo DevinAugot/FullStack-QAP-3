@@ -2,7 +2,7 @@
 DONE 
 
 2.	As a Martha’s Good Eats business partner I can fetch all the Menu from the database from a REST API. The records will be returned as json data.
-
+ DONE - made a page just to display json data by the push of a button in browser and console as well just for good measure
 
 3.	As a Martha’s Good Eats staff member I can see a web page that will allow me to add a new item to the Menu of the database.
 DONE
