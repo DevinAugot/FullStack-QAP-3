@@ -1,6 +1,22 @@
 const dal = require("./pdb");
 
-//get all actors. by ID
+// retreive JSON DATA for extra page
+var getMenuJson = function() {
+  if (DEBUG) console.log("menu.pg.dal.getMenuJson()");
+  return new Promise(function(resolve, reject) {
+    const sql = "SELECT * FROM menu \  ORDER BY item_id ASC;";
+    dal.query(sql, [], (err, result) => {
+      if (err) {
+        if (DEBUG) console.log(err);
+        reject(err);
+      } else {
+        resolve(result.rows);
+      }
+    });
+  });
+};
+
+//Gets all menu items in ascending order
 var getMenu = function () {
   if (DEBUG) console.log("menu.pg.dal.getMenu()");
   return new Promise(function (resolve, reject) {
@@ -18,7 +34,7 @@ var getMenu = function () {
     });
   });
 };
-// GET all
+// GET's menu item by specified ID
 var getMenuItemByMenuId = function (id) {
   if (DEBUG) console.log("menu.pg.dal.getMenuItemByMenuId()");
   return new Promise(function (resolve, reject) {
@@ -36,7 +52,7 @@ var getMenuItemByMenuId = function (id) {
   });
 };
 
-// // this adds to the database (insert) POST
+// // this adds to the database (SQL insert's) POST
 var addMenuItem = function (item_id, item_name, item_price) {
   if (DEBUG) console.log("menu.pg.dal.addMenuItem()");
   return new Promise(function (resolve, reject) {
@@ -54,8 +70,7 @@ var addMenuItem = function (item_id, item_name, item_price) {
   });
 };
 
-// // PUT
-
+// PUT updates any item based on sql specs
 var putMenuItem = function (item_id, item_name, item_price) {
   if (DEBUG) console.log("menu.pg.dal.putMenuItem()");
   return new Promise(function (resolve, reject) {
@@ -71,7 +86,7 @@ var putMenuItem = function (item_id, item_name, item_price) {
   });
 };
 
-// // UPDATE WORKS!
+// // UPDATE WORKS! also updates any item based on sql specs
 var patchMenuItem = function (item_id, item_name, item_price) {
   if (DEBUG) console.log("menu.pg.dal.patchMenuItem()");
   return new Promise(function (resolve, reject) {
@@ -87,7 +102,7 @@ var patchMenuItem = function (item_id, item_name, item_price) {
   });
 };
 
-// /// DELETE
+// /// DELETE any menu item by sql specs
 var deleteMenuItem = function (id) {
   if (DEBUG) console.log("menu.pg.dal.deleteMenuItem()");
   return new Promise(function (resolve, reject) {
@@ -109,4 +124,5 @@ module.exports = {
   deleteMenuItem,
   patchMenuItem,
   putMenuItem,
+  getMenuJson
 };

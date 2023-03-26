@@ -1,0 +1,33 @@
+<html lang="en">
+    <%- include('./partials/header.ejs') %>
+    <body>
+        <%- include('./partials/nav.ejs') %>
+        <div class="Menu content">
+
+<!-- add this button to your menu.ejs file -->
+<button id="menuJsonBtn">View Menu as JSON</button>
+
+
+<script>
+    // add an event listener to the menuJsonBtn to fetch and display the menu data as JSON
+    document.getElementById("menuJsonBtn").addEventListener("click", async () => {
+      try {
+        const response = await fetch("/menu/menuJson");
+        const menuJson = await response.json();
+
+        console.log(menuJson); // log the menu data to the console to be sure everything from db is logged
+
+         // display the menu data as a JSON string in an alert box just for fun
+        alert(`Here's the current JSON menu data from the PostGres DB: \n ${JSON.stringify(menuJson)}`); 
+      } catch (err) {
+        console.error(err);
+        alert("Error fetching menu data");
+      }
+    });
+  </script>
+        </div>
+    </body>
+</br>
+    <%- include('./partials/footer.ejs') %>
+</html>
+
