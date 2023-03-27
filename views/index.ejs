@@ -2,8 +2,13 @@
     <%- include('./partials/header.ejs') %>
     <body>
         <%- include('./partials/nav.ejs') %>
-        <h1>Home page</h1>
-        <h2>Welcome to the Home page <%= name %>.</h2>
+        <h2>Welcome to the Restaurant database control website <%= name %>.</h2>
+        
+        <div class="container">
+            <img id="index-img" src="https://images.unsplash.com/photo-1568031813264-d394c5d474b9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1169&q=80" alt="">
+            <div id="home-div" ><p>Employees authorized to use this website can freely edit menu data as requested by Owner/Manager based on an ever-changing plethora of menu item's. This will ease data collection for our monthly invoices and even keep track of sales.</p></div>
+        </div>
     </body>
     <%- include('./partials/footer.ejs') %>
+    <link rel="stylesheet" href="/styles.css">
 </html>

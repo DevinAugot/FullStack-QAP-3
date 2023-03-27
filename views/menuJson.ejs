@@ -4,9 +4,12 @@
         <%- include('./partials/nav.ejs') %>
         <div class="Menu content">
 
-<!-- add this button to your menu.ejs file -->
+<div id="Menu-json-pargraph">
+  <p>Here you can press the button below to view the json data in an alert window in browser! I made this page for fun to see what else I could do with the JSON data thats retreived from the PostGres Database. </p>
+</div>
+<div id="json-btn">
 <button id="menuJsonBtn">View Menu as JSON</button>
-
+</div>
 
 <script>
     // add an event listener to the menuJsonBtn to fetch and display the menu data as JSON
@@ -27,7 +30,9 @@
   </script>
         </div>
     </body>
+
 </br>
     <%- include('./partials/footer.ejs') %>
+    <link rel="stylesheet" href="/styles.css">
 </html>
 

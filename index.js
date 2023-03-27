@@ -14,7 +14,7 @@ app.use(express.urlencoded({ extended: true })); // This is important!
 app.use(methodOverride("_method")); // So is this!
 
 app.get("/", (req, res) => {
-  res.render("index.ejs", { name: "For Adding menu Items" });
+  res.render("index.ejs", { name: "for Adding/Editing/Deleting Menu Items" });
 });
 app.get("/about", (request, response) => {
   response.render("about.ejs");

@@ -4,7 +4,9 @@
         <%- include('./partials/nav.ejs') %>
         <div class="Menu content">
             <form action="/menu" method="POST">
-                <b>Menu: </b></br> 
+               <u> <b>Current Menu List: </b></u>
+            </br> 
+        </br>
             <% if (theMenu.length > 0) { %>
                 <% theMenu.forEach(menu => { %>
                     <b><%= menu.item_id %><%=". "%><%= menu.item_name %> <%= menu.item_price %></b>
@@ -13,23 +15,24 @@
                     <a href="/menu/<%=menu.item_id%>/replace?item_name=<%=menu.item_name%>&item_price=<%=menu.item_price%>">replace</a></br> 
                     <% }) %>
             <% } %>
-            </br><label>Add Menu Item:</label></br>
-        </br>
-            <label>New Item ID Number:
+            <div id="menu-inputs">
+            <u><label >Add New Menu Item:</label></u>
+      
+            <label id="new-item">New Item ID Number:
                 <input type="text" id="item_id" name="item_id" value="<%= locals.item_id %>" required>
             </label>
-            <label>Item Name:
+            <label id="item-name">New Item Item Name:
                 <input type="text" id="item_name" name="item_name" value="<%= locals.item_name %>" required>
             </label>
-            <label>Item price:
+            <label id="item-price">New Item price:
                 <input type="text" id="item_price" name="item_price" value="<%= locals.item_price %>" required>
             </label>
-            </br>
-        </br>
-            <button>POST</button>
+            <button id="post-btn">POST</button>
         </form>
+    </div>
         </div>
     </body>
 </br>
     <%- include('./partials/footer.ejs') %>
+    <link rel="stylesheet" href="/styles.css">
 </html>
