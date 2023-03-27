@@ -20,6 +20,7 @@ nav{
   display: flex;
   justify-content: space-between;
   margin-bottom: 40px;
+
   padding-bottom: 10px;
   border-bottom: 1px solid #ddd;
   text-transform: uppercase;
@@ -77,13 +78,19 @@ textarea{
   height: 120px;
 }
 .create button{
+  margin-left: 140px;
   margin-top: 20px;
   background: crimson;
-  color: white;
-  padding: 6px;
-  border: 0;
-  font-size: 1.2em;
-  cursor: pointer;
+  display: inline-block;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: 600;
+  text-align: center;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
 }
 .dropbtn {
   background-color: #04AA6D;
@@ -119,3 +126,102 @@ textarea{
 .dropdown:hover .dropdown-content {display: block;}
 
 .dropdown:hover .dropbtn {background-color: #3e8e41;}
+
+.menu-inputs{
+  display: grid;
+}
+
+
+/* JSON page */
+
+#json-btn{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30vh;
+
+}
+#menuJsonBtn {
+  display: inline-block;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: 600;
+  text-align: center;
+  color: #fff;
+  background-color: #4caf50;
+  border: none;
+  border-radius: 4px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+#menuJsonBtn:hover{
+  background-color: #3e8e41;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
+}
+#Menu-json-pargraph{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 700px); /* subtract the height of the button and some margin from the viewport height */
+}
+
+#Menu-json-pargraph p {
+  text-align: center;
+}
+/* menu page */
+
+#post-btn{
+    margin-left: 20px;
+   
+    background: #2e9404;
+    display: inline-block;
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    box-shadow: 0 4px 6px rgb(0 0 0 / 20%);
+    transition: all 0.3s ease;
+}
+
+#menu-inputs {
+  display: grid;
+  grid-gap: 20px;
+  justify-items: center;
+  align-items: center;
+  position: absolute;
+  top: 136px;
+  right: 5px;
+  left: 60rem;
+}
+
+#new-item{
+  margin-right: 80px;
+}
+
+#item-name{
+  margin-right: 80px;
+}
+#item-price{
+  margin-right: 38px;
+}
+
+/* Home Page */
+
+#index-img{
+  display: center;
+  border-radius: 4px;
+  height: 400px;
+  width: 500px;
+  margin-right: 50px;
+}
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 50px;
+}
+
