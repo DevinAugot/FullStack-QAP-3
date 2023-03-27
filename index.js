@@ -20,7 +20,7 @@ app.get("/about", (request, response) => {
   response.render("about.ejs");
 });
 
-// why isnt page rendering JSON
+// MenuJson Page route
 app.get("/menuJson", (request, response) => {
   response.render("menuJson.ejs");
 });
